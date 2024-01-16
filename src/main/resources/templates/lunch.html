@@ -2,10 +2,79 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>랜덤런치표</title>
+    <title>랜덤런치조</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+    <script>
+        function add() {
+
+            var password = prompt("비밀번호를 입력하세요:");
+
+            if (password === "qkrtjdeo") {
+                $.ajax({
+                    url: "/lunch/make",
+                    method: "GET",
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.error("Ajax request failed:", error);
+                    }
+                });
+            } else {
+                alert("비밀번호 틀렸어요");
+            }
+        }
+
+        function remove() {
+            var password = prompt("비밀번호를 입력하세요:");
+
+            if (password === "qkrtjdeo") {
+                $.ajax({
+                    url: "/lunch/delete",
+                    method: "GET",
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(error) {
+                        console.error("Ajax request failed:", error);
+                    }
+                });
+            } else {
+                alert("비밀번호 틀렸어요");
+            }
+        }
+    </script>
 </head>
 <body>
-<h2>랜덤런치표 페이지</h2>
-1월 16일 화요일에 업데이트 됩니다!
+<div class="container">
+    <h1>랜덤런치조🍚</h1>
+    다들 맛점하세용~
+    <button id="addButton" type="button" class="btn btn-success" onclick="add()">생성</button>
+    <button id="deleteButton" type="button" class="btn btn-dark" onclick="remove()">삭제</button>
+
+    <div th:each="teamEntry : ${teams}">
+        <h2 th:text="${teamEntry.key}"></h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th th:each="header : ${#numbers.sequence(1,7)}" th:text="${header + '조'}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="memberRow : ${#numbers.sequence(0, #lists.size(teamEntry.value)-1, 7)}">
+                <td th:each="column : ${#numbers.sequence(memberRow, memberRow + 6)}" th:if="${column lt #lists.size(teamEntry.value)}">
+                    <span th:text="${teamEntry.value[column]}"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
 </body>
 </html>

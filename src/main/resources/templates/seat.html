@@ -86,7 +86,6 @@
             $("#confirmButton").click(function() {
                 var enteredPassword = prompt("비밀번호를 입력하세요");
 
-                // 입력된 비밀번호가 비어있지 않다면 Ajax 요청
                 if (enteredPassword === "qkrtjdeo") {
                     $.ajax({
                         url: "/seat/confirm",

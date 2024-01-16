@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ssafy22.emb2d.SeatAllocator;
+import ssafy22.emb2d.TeamAllocator;
+
+import java.time.LocalDate;
 
 import static ssafy22.emb2d.Application.SEAT_FIXED;
 
@@ -20,7 +23,8 @@ public class BoardController {
     }
 
     @GetMapping("/lunch")
-    public String randomTable() {
+    public String randomTable(Model model) {
+        model.addAttribute("teams", TeamAllocator.teams);
         return "lunch";
     }
 
