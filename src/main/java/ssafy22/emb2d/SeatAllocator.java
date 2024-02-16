@@ -10,8 +10,8 @@ import static ssafy22.emb2d.Application.*;
 @Component
 public class SeatAllocator {
 
-    private final int LEADER_COUNT = 7;
-    private final int[] LEADER_SEAT = {3,7,11,15,17,23,26};
+    private final int LEADER_COUNT = 6;
+    private final int[] LEADER_SEAT = {3,7,11,17,21,26};
 
     private List<String> seat;
     private Set<String> seven;
@@ -22,7 +22,7 @@ public class SeatAllocator {
         for (int i = 0; i < MEMBERS_COUNT; i++) {
             seat.add(SEAT_FIXED.get(i));
         }
-        seven = new HashSet<>(Set.of("김인겸", "김준홍", "문세진", "박승헌", "변재혁", "성열민", "송민석"));
+        seven = new HashSet<>(Set.of("김인겸", "김준홍", "문세진", "박승헌", "변재혁", "성열민"));
     }
 
     public List<String> getSeat() {

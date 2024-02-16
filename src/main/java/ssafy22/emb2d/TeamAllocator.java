@@ -31,9 +31,17 @@ public class TeamAllocator {
                 "전보름", "하성표", "박승헌", "정윤호", "이지예", "이훈재"
         ));
 
+        List<String> team4 = new ArrayList<>(Arrays.asList(
+                "주호성", "하성표", "변재혁", "송민석", "한영찬", "여종원", "장건수",
+                "장윤석", "홍예원", "송제강", "성열민", "박승헌", "이지예", "문세진",
+                "김인겸", "전보름", "전혜림", "오정현", "최유정", "이훈재", "최용현",
+                "전다윤", "진홍엽", "김준홍", "김송원", "이유단"
+        ));
+
         teams.put(LocalDate.of(2024, 1, 16), team1);
         teams.put(LocalDate.of(2024, 1, 23), team2);
         teams.put(LocalDate.of(2024, 1, 31), team3);
+        teams.put(LocalDate.of(2024, 2, 7), team4);
 
     }
     public static List<String> makeTeam() {
